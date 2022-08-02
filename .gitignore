@@ -1,1 +1,2 @@
-test_base_model.py
+test_*.py
+*.json
