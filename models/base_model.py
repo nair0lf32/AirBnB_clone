@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Defines BaseModel class"""
 
 from uuid import uuid4
@@ -14,10 +15,11 @@ class BaseModel():
             self.updated_at = datetime.now()
         else:
             for key, value in kwargs.items():
-                if key in ["created_at", "updated_at"]:
-                    setattr(self, key, datetime.fromisoformat(value))
-                else:
-                    setattr(self, key, value)
+                if key != "__class__":
+                    if key in ["created_at", "updated_at"]:
+                        setattr(self, key, datetime.fromisoformat(value))
+                    else:
+                        setattr(self, key, value)
 
     def __str__(self):
         """Return description of instance"""
