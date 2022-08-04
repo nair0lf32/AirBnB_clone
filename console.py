@@ -6,7 +6,11 @@ from models import storage
 import cmd
 from models.base_model import BaseModel
 from models.user import User
-
+from models.state import State
+from models.review import Review
+from models.place import Place
+from models.city import City
+from models.amenity import Amenity
 from shlex import split
 
 
@@ -18,7 +22,9 @@ class HBNBCommand(cmd.Cmd):
     """Command processor"""
 
     prompt = "(hbnb) "
-    _class = ["BaseModel", "User"]
+    _class = [
+        "BaseModel", "User", "Place", "State",
+        "City", "Amenity", "Review"]
 
     def do_create(self, line):
         """Creates a new instance of BaseModel, saves it
