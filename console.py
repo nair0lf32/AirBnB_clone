@@ -2,7 +2,6 @@
 """Defines HBNBCommand class"""
 
 
-from ast import arg
 from models import storage
 import cmd
 from models.base_model import BaseModel
@@ -102,7 +101,6 @@ class HBNBCommand(cmd.Cmd):
         elif len(argv) >= 1:
             if argv[0] in HBNBCommand._class:
                 if len(argv) >= 2:
-                    id = argv[1]
                     update_key = argv[0] + "." + argv[1]
                     if update_key in storage.all().keys():
                         if len(argv) >= 3:
