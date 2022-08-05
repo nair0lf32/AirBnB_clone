@@ -2,6 +2,9 @@
 """Defines HBNBCommand class"""
 
 
+from itertools import count
+from click import argument
+from soupsieve import match
 from models import storage
 import cmd
 from models.base_model import BaseModel
@@ -12,6 +15,7 @@ from models.place import Place
 from models.city import City
 from models.amenity import Amenity
 from shlex import split
+import re
 
 
 def parse(argv):
@@ -126,6 +130,45 @@ class HBNBCommand(cmd.Cmd):
                     print("** instance id missing **")
             else:
                 print("** class doesn't exist **")
+
+    def do_count(self, line):
+        """Retrieve the number of instances of a class:
+        <class name>.count()."""
+
+        argv = parse(line)
+        if argv == []:
+            print("** class name missing **")
+        else:
+            if argv[0] in HBNBCommand._class:
+                all_inst = [v.to_dict() for v in storage.all().values()]
+                count = 0
+                for dic in all_inst:
+                    if dic["__class__"] == argv[0]:
+                        count += 1
+                print(count)
+            else:
+                print("** class doesn't exist **")
+
+    def default(self, line):
+        """Statement by default"""
+
+        argv = line.split(".")
+        if argv[0] in HBNBCommand._class and len(argv) == 2:
+            match = re.search(r"(\w+)\((\".*\"+)?\)", argv[1])
+            if match is not None:
+                method = match.group(1)
+                argument = match.group(2)
+                _line = argv[0] + " " + str(argument)
+                if argument is None:
+                    _line = argv[0]
+                try:
+                    eval('self.do_' + method)(_line)
+                except AttributeError:
+                    return cmd.Cmd.default(self, line)
+            else:
+                return cmd.Cmd.default(self, line)
+        else:
+            return cmd.Cmd.default(self, line)
 
     def emptyline(self):
         """Handle an empty line + ENTER"""
