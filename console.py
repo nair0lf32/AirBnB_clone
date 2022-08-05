@@ -2,9 +2,6 @@
 """Defines HBNBCommand class"""
 
 
-from itertools import count
-from click import argument
-from soupsieve import match
 from models import storage
 import cmd
 from models.base_model import BaseModel
@@ -19,6 +16,9 @@ import re
 
 
 def parse(argv):
+    braces = re.search(r"\{(.*?)\}", argv)
+    if braces is not None:
+        pass
     return [i.strip(",") for i in split(argv)]
 
 
@@ -154,7 +154,7 @@ class HBNBCommand(cmd.Cmd):
 
         argv = line.split(".")
         if argv[0] in HBNBCommand._class and len(argv) == 2:
-            match = re.search(r"(\w+)\((\".*\"+)?\)", argv[1])
+            match = re.search(r"(\w+)\((\".*\"?)?\)", argv[1])
             if match is not None:
                 method = match.group(1)
                 argument = match.group(2)
