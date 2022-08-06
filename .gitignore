@@ -1,3 +1,2 @@
-test_*.py
 *.json
 __pycache__/
