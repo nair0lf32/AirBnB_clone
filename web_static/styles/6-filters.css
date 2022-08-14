@@ -65,7 +65,7 @@ ul,li{
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     opacity: 0;
-    transition: opacity .5s;
+    transition: opacity .3s;
     visibility: hidden;
 }
 div.container .amenities .popover{
