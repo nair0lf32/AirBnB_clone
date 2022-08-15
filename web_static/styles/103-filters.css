@@ -1,0 +1,170 @@
+/** Filters style **/
+
+div.container .filters{
+    position: relative;
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+  
+}
+
+div.container .filters button{
+    position: absolute;
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color: #fff;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    right: 30px;
+    margin: 11px 0 11px 0px;
+ }
+
+div.container .filters button:hover{
+    opacity: 0.9;
+}
+
+div.container .locations, .amenities{
+    height: 100%;
+    width: 25%;
+    display: inline-block;
+}
+
+div.container .locations h3, .amenities h3{
+   font-weight: 600;
+   margin-bottom: 0;
+   margin-left: 55px;
+
+}
+
+div.container .locations h4, .amenities h4{
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0 0 0 55px;
+}
+
+div.container .locations{
+    border-right: 1px solid #ddd;
+}
+
+ul,li{
+    list-style: none;
+}
+
+.popover{
+    background-color: #FAFAFA;
+    margin-top: 19px;
+    margin-left: -1px;
+    list-style: none;
+    padding-top: 25px;
+    padding-bottom: 40px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity .3s;
+    visibility: hidden;
+}
+div.container .amenities .popover{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+div.container .amenities .popover li{
+    font-size: 16px;
+}
+
+div.container div:hover>.popover{
+    visibility: inherit;
+    opacity: inherit;
+}
+
+div.container .filters .search-mobile{
+    display: none;
+}
+
+@media screen and (max-width: 290px) {
+    div.container .filters button{
+        display: none;
+    }
+    div.container .filters .search-mobile{
+        display: block;
+    }
+    
+}
+
+@media screen and (max-width: 705px) {
+    div.container .filters .locations ul{
+        padding-left: 10px;
+        margin-top: 0;
+    }
+    div.container .filters div h4{
+        font-size: 11px;
+    }
+    
+}
+
+@media screen and (max-width: 560px) {
+    div.container .filters div h4{
+        margin-left: 45px;
+    }
+    div.container .filters div h3{
+        margin-left: 45px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    div.container .filters div h4{
+        display: none;
+    }
+    div.container .filters div h3{
+         margin-top: 30px;
+    }
+
+    div.container .filters .locations ul{
+        padding-left: 10px;
+        margin-top: 20px;
+    }
+    div.container .filters .amenities ul{
+        padding-left: 10px;
+        margin-top: 20px;
+    }
+ 
+    div.container .filters .locations ul li h2{
+        font-size: 15px;
+    }
+    
+}
+
+
+@media screen and (max-width: 455px) {
+    div.container .filters{
+        height: 40px;
+        width: 90%;
+        margin: 0 auto;
+        
+    }
+
+    div.container .filters button{
+        position: absolute;
+        font-size: 10px;
+        background-color: #FF5A5F;
+        color: #fff;
+        height: 20px;
+        width: 20%;
+        border: none;
+        border-radius: 2px;
+        right: 10px;
+        margin: 9px 0 9px 0px;
+        text-align: center;
+        font-weight: bolder;
+     }
+
+    div.container .filters div{
+        display: none;
+    }
+     
+    
+}
